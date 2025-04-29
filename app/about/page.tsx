@@ -107,7 +107,7 @@ export default function About() {
               >
                 <h2 className="text-2xl font-semibold mb-4 text-primary">Our Mission</h2>
                 <p className="text-gray-300">
-                  At Sole Cloud, we're dedicated to empowering businesses with cutting-edge web solutions 
+                  At Sole Cloud, we&apos;re dedicated to empowering businesses with cutting-edge web solutions 
                   that leverage the full potential of cloud technology. Our mission is to help our clients 
                   establish a powerful online presence that drives growth and success.
                 </p>
@@ -171,7 +171,7 @@ export default function About() {
                   </div>
                   <div>
                     <h3 className="text-xl font-medium mb-2">Partnership</h3>
-                    <p className="text-gray-400">We're invested in your long-term success</p>
+                    <p className="text-gray-400">We&apos;re invested in your long-term success</p>
                   </div>
                 </div>
               </motion.div>
