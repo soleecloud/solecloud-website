@@ -40,13 +40,14 @@ body {
   }
   
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
+    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24;
   }
 
   .card {
-    @apply bg-dark p-6 rounded-lg shadow-lg hover:shadow-xl 
+    @apply bg-dark p-5 sm:p-6 rounded-lg shadow-lg hover:shadow-xl 
     hover:shadow-primary/20 transition-all duration-300 
-    border border-gray-800 hover:border-primary/30;
+    border border-gray-800 hover:border-primary/30
+    flex flex-col h-full justify-between;
   }
   
   .floating {

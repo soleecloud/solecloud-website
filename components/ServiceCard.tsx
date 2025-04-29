@@ -12,7 +12,7 @@ interface ServiceCardProps {
 export default function ServiceCard({ title, description, icon }: ServiceCardProps) {
   return (
     <motion.div 
-      className="card group relative h-full overflow-hidden"
+      className="card group relative h-full overflow-hidden flex flex-col"
       whileHover={{ y: -5 }}
       transition={{ type: "spring", stiffness: 300 }}
     >
@@ -21,7 +21,7 @@ export default function ServiceCard({ title, description, icon }: ServiceCardPro
         {icon}
       </div>
       
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col h-full">
         <motion.div 
           className="text-primary mb-4 text-3xl"
           initial={{ rotate: 0 }}

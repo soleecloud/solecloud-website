@@ -77,7 +77,7 @@ export default function Contact() {
           </motion.p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
           <AnimatedSection>
             <motion.div 
               className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700 mb-8"
@@ -85,7 +85,7 @@ export default function Contact() {
               transition={{ duration: 0.3 }}
             >
               <h2 className="text-2xl font-semibold mb-6 text-primary">Get In Touch</h2>
-              <div className="space-y-4">
+              <div className="space-y-6 sm:space-y-4 py-2">
                 <motion.div 
                   className="flex items-start"
                   initial={{ opacity: 0, x: -20 }}
@@ -93,13 +93,13 @@ export default function Contact() {
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
                   <motion.div 
-                    className="mt-1 mr-3 text-primary"
+                    className="mt-1 mr-4 text-primary text-lg"
                     whileHover={{ scale: 1.2, rotate: 5 }}
                   >
                     <FaMapMarkerAlt />
                   </motion.div>
                   <div>
-                    <h3 className="font-medium">Location</h3>
+                    <h3 className="font-medium text-base sm:text-sm">Location</h3>
                     <p className="text-gray-400">Based in Maryland, USA</p>
                   </div>
                 </motion.div>
@@ -111,13 +111,13 @@ export default function Contact() {
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
                   <motion.div 
-                    className="mt-1 mr-3 text-primary"
+                    className="mt-1 mr-4 text-primary text-lg"
                     whileHover={{ scale: 1.2, rotate: 5 }}
                   >
                     <FaEnvelope />
                   </motion.div>
                   <div>
-                    <h3 className="font-medium">Email</h3>
+                    <h3 className="font-medium text-base sm:text-sm">Email</h3>
                     <p className="text-gray-400">soleecloud@gmail.com</p>
                   </div>
                 </motion.div>
@@ -129,13 +129,13 @@ export default function Contact() {
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
                   <motion.div 
-                    className="mt-1 mr-3 text-primary"
+                    className="mt-1 mr-4 text-primary text-lg"
                     whileHover={{ scale: 1.2, rotate: 5 }}
                   >
                     <FaPhone />
                   </motion.div>
                   <div>
-                    <h3 className="font-medium">Phone</h3>
+                    <h3 className="font-medium text-base sm:text-sm">Phone</h3>
                     <p className="text-gray-400">(240) 300-0382</p>
                   </div>
                 </motion.div>
@@ -148,32 +148,32 @@ export default function Contact() {
               transition={{ duration: 0.3 }}
             >
               <h2 className="text-2xl font-semibold mb-6 text-primary">Business Hours</h2>
-              <ul className="space-y-2 text-gray-400">
+              <ul className="space-y-4 sm:space-y-2 text-gray-400 py-2">
                 <motion.li 
-                  className="flex justify-between"
+                  className="flex flex-col sm:flex-row sm:justify-between"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.1 }}
                 >
-                  <span>Monday - Friday:</span>
+                  <span className="font-medium mb-1 sm:mb-0">Monday - Friday:</span>
                   <span>9:00 AM - 6:00 PM</span>
                 </motion.li>
                 <motion.li 
-                  className="flex justify-between"
+                  className="flex flex-col sm:flex-row sm:justify-between"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.2 }}
                 >
-                  <span>Saturday:</span>
+                  <span className="font-medium mb-1 sm:mb-0">Saturday:</span>
                   <span>10:00 AM - 4:00 PM</span>
                 </motion.li>
                 <motion.li 
-                  className="flex justify-between"
+                  className="flex flex-col sm:flex-row sm:justify-between"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.3 }}
                 >
-                  <span>Sunday:</span>
+                  <span className="font-medium mb-1 sm:mb-0">Sunday:</span>
                   <span>Closed</span>
                 </motion.li>
               </ul>
