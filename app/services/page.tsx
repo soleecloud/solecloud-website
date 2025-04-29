@@ -179,14 +179,16 @@ export default function Services() {
                     </motion.li>
                   ))}
                 </ul>
-                <motion.button 
-                  className="mt-6 px-5 py-2 bg-gray-900 text-blue-400 rounded-md border border-blue-400 hover:bg-blue-400 hover:text-gray-900 transition-all duration-300 flex items-center group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Learn More
-                  <FaAngleRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </motion.button>
+                <Link href="/contact">
+                  <motion.button 
+                    className="mt-6 px-5 py-2 bg-gray-900 text-blue-400 rounded-md border border-blue-400 hover:bg-blue-400 hover:text-gray-900 transition-all duration-300 flex items-center group"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Contact Us
+                    <FaAngleRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </motion.button>
+                </Link>
               </div>
             </motion.div>
           ))}
