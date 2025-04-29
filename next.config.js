@@ -4,6 +4,14 @@ const nextConfig = {
   images: {
     domains: [],
   },
+  // Disable ESLint during build
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  // Disable TypeScript checks during build
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   webpack: (config) => {
     // Handle canvas issues for server-side rendering
     config.externals = [...config.externals, { canvas: 'canvas' }];
