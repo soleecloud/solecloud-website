@@ -21,9 +21,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen relative">
       {/* Cloud Background - positioned fixed and below all content */}
-      <CloudBackground>
-        <div className="w-full h-full" />
-      </CloudBackground>
+      <CloudBackground />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex justify-center items-center overflow-hidden">

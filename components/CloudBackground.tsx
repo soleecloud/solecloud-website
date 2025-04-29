@@ -71,33 +71,25 @@ export default function CloudBackground({ children }: CloudBackgroundProps) {
   }, [vantaEffect, isMobile, isClient]);
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
-      {/* Vanta background container */}
-      {isClient && (
-        <div 
-          ref={vantaRef} 
-          className="absolute top-0 left-0 w-full h-full z-[-1]"
-          style={{
-            background: isMobile 
-              ? 'linear-gradient(to bottom, #68b8d7, #93c5e4)' 
-              : undefined
-          }}
-        >
-          {/* Static background for mobile */}
-          {isMobile && (
-            <div className="absolute inset-0 bg-cover bg-center opacity-40"
-                 style={{ 
-                   backgroundImage: 'url("/static-clouds.jpg")',
-                   filter: 'blur(1px)'
-                 }} />
-          )}
-        </div>
+    <div 
+      ref={vantaRef} 
+      className="fixed inset-0 z-[-1]"
+      style={{
+        background: isMobile 
+          ? 'linear-gradient(to bottom, #68b8d7, #93c5e4)' 
+          : undefined
+      }}
+    >
+      {/* Static background for mobile */}
+      {isClient && isMobile && (
+        <div className="absolute inset-0 bg-cover bg-center opacity-40"
+            style={{ 
+              backgroundImage: 'url("/static-clouds.jpg")',
+              filter: 'blur(1px)'
+            }} 
+        />
       )}
-      
-      {/* Content */}
-      <div className="relative z-10">
-        {children}
-      </div>
     </div>
   );
+}
 }
