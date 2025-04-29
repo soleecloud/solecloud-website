@@ -3,11 +3,9 @@
 import { useEffect, useState, useRef } from 'react';
 import * as THREE from 'three';
 
-interface CloudBackgroundProps {
-  children?: React.ReactNode;
-}
+interface CloudBackgroundProps {}
 
-export default function CloudBackground({ children }: CloudBackgroundProps) {
+export default function CloudBackground() {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -91,5 +89,4 @@ export default function CloudBackground({ children }: CloudBackgroundProps) {
       )}
     </div>
   );
-}
 }
