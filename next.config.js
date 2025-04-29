@@ -12,6 +12,11 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    // Ignore errors related to specific files
+    instrumentationHook: false,
+    esmExternals: "loose"
+  },
   webpack: (config) => {
     // Handle canvas issues for server-side rendering
     config.externals = [...config.externals, { canvas: 'canvas' }];

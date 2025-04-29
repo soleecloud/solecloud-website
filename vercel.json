@@ -1,23 +1,7 @@
 {
-  "buildCommand": "CI=false next build",
-  "ignoreCommand": "echo 'Skip detection for TypeScript errors'",
-  "installCommand": "npm install --legacy-peer-deps --no-audit --no-fund",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "next build",
   "devCommand": "next dev",
-  "framework": "nextjs",
-  "outputDirectory": ".next",
-  "typescript": {
-    "ignoreBuildErrors": true
-  },
-  "eslint": {
-    "ignoreDuringBuilds": true
-  },
-  "builds": [
-    {
-      "src": "next.config.js",
-      "use": "@vercel/next"
-    }
-  ],
-  "env": {
-    "NEXT_TELEMETRY_DISABLED": "1"
-  }
+  "installCommand": "npm install",
+  "framework": "nextjs"
 }
