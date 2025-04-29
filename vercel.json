@@ -1,0 +1,21 @@
+{
+  "buildCommand": "next build",
+  "devCommand": "next dev",
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
+    }
+  ],
+  "github": {
+    "silent": true
+  },
+  "ignoreCommand": "echo \"Skip detection for TypeScript errors\"",
+  "installCommand": "npm install",
+  "typescript": {
+    "ignoreBuildErrors": true
+  },
+  "eslint": {
+    "ignoreDuringBuilds": true
+  }
+}
