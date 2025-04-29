@@ -56,7 +56,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 pt-28 md:pt-20">
       <div className="section-container overflow-y-auto">
         <AnimatedSection className="mb-12 text-center">
           <motion.h1 

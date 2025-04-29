@@ -56,7 +56,7 @@ export default function About() {
     return (
       <>
         <div className="fixed inset-0 z-0 bg-[#0f172a]"></div>
-        <div className="pt-32 pb-12 px-4 lg:px-8 relative z-10">
+        <div className="pt-36 md:pt-32 pb-12 px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
             {/* Content placeholder while loading */}
             <div className="relative mb-12 text-center mx-auto z-10">
@@ -77,7 +77,7 @@ export default function About() {
 
   return (
     <GlobeBackground>
-      <div className="pt-32 pb-12 px-4 lg:px-8 relative">
+      <div className="pt-36 md:pt-32 pb-12 px-4 lg:px-8 relative">
         <div className="max-w-4xl mx-auto">
           <motion.div 
             ref={headingRef}
