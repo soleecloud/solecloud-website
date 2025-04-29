@@ -83,7 +83,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="md:hidden" id="mobile-menu">
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-900/90 backdrop-blur-md">
+          <div className="px-2 pt-4 pb-4 space-y-2 bg-gray-900/95 backdrop-blur-md shadow-lg">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -92,7 +92,7 @@ export default function Navbar() {
                   pathname === link.href
                     ? 'text-primary border-l-2 border-primary pl-2'
                     : 'text-gray-300 hover:text-white'
-                } block px-3 py-2 rounded-md text-base font-medium`}
+                } block px-3 py-3 rounded-md text-base font-medium`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}

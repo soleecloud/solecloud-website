@@ -25,7 +25,7 @@ export default function Home() {
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex justify-center items-center overflow-hidden">
-        <div className="relative z-10 w-full h-full flex justify-center items-center pt-20">
+        <div className="relative z-10 w-full h-full flex justify-center items-center pt-28 md:pt-20">
           <div className="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
