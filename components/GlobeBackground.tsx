@@ -106,7 +106,7 @@ export default function GlobeBackground({ children }: GlobeBackgroundProps) {
       if (effect) effect.destroy();
       if (vantaEffect) vantaEffect.destroy();
     };
-  }, [vantaEffect, mounted]);
+  }, [vantaEffect, mounted, webGLSupported]);
 
   // Add a fallback static background if not mounted yet, if WebGL is not supported, or if there's an error
   if (!mounted || !webGLSupported) {
