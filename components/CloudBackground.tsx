@@ -2,62 +2,102 @@
 
 import { useEffect, useState, useRef } from 'react';
 import * as THREE from 'three';
-import CLOUDS from 'vanta/dist/vanta.clouds.min';
 
 interface CloudBackgroundProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default function CloudBackground({ children }: CloudBackgroundProps) {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const vantaRef = useRef<HTMLDivElement>(null);
-  
+
+  // Check if the user is on a mobile device
   useEffect(() => {
-    // Only initialize Vanta when component is mounted and THREE is available
-    if (!vantaRef.current || vantaEffect) return;
+    setIsClient(true);
     
-    try {
-      const effect = CLOUDS({
-        el: vantaRef.current,
-        THREE: THREE,
-        mouseControls: false,
-        touchControls: false,
-        gyroControls: false,
-        minHeight: 200,
-        minWidth: 200,
-        speed: 0.5, // Slower, more subtle movement
-        cloudColor: '#0284c7',
-        backgroundColor: '#020617',
-        skyColor: '#0f172a',
-        sunColor: '#0284c7',
-        sunGlareColor: '#0284c7',
-        sunlightColor: '#0284c7',
-        cloudShadowColor: '#020617',
-        cloudColorMultiplier: 0.7,
-        scale: 1.2,
-        scaleMobile: 1.5,
-        quantity: 3, // Fewer clouds for lighter performance
-        backgroundAlpha: 0.9
-      });
-      setVantaEffect(effect);
-    } catch (error) {
-      console.error("Failed to initialize VANTA effect:", error);
+    if (typeof window !== 'undefined') {
+      const userAgent = window.navigator.userAgent;
+      const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+      setIsMobile(mobileRegex.test(userAgent));
     }
-    
-    // Cleanup function to prevent memory leaks
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
+  }, []);
+
+  // Initialize Vanta.js effect only on desktop devices
+  useEffect(() => {
+    if (!isClient || isMobile || vantaEffect) return;
+
+    // Only import Vanta on desktop
+    const loadVanta = async () => {
+      try {
+        // Dynamic import to avoid loading on server side
+        const VANTA = await import('vanta/dist/vanta.clouds.min');
+        
+        if (!vantaRef.current || !VANTA.default) return;
+        
+        // Initialize the effect
+        const effect = VANTA.default({
+          el: vantaRef.current,
+          THREE: THREE,
+          mouseControls: true,
+          touchControls: false,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          skyColor: 0x68b8d7,
+          cloudColor: 0xafdeff,
+          cloudShadowColor: 0x1d5c7c,
+          sunColor: 0xff9919,
+          sunGlareColor: 0xffc561,
+          sunlightColor: 0xf2bf95,
+          speed: 1.0
+        });
+        
+        setVantaEffect(effect);
+      } catch (error) {
+        console.error('Failed to load Vanta effect:', error);
+      }
     };
-  }, [vantaEffect]); // Only depend on vantaEffect to ensure it runs only once
-  
+    
+    loadVanta();
+    
+    // Cleanup function
+    return () => {
+      if (vantaEffect) {
+        vantaEffect.destroy();
+      }
+    };
+  }, [vantaEffect, isMobile, isClient]);
+
   return (
-    <div className="absolute inset-0 z-[-10] overflow-hidden pointer-events-none">
-      <div 
-        ref={vantaRef} 
-        className="absolute inset-0 w-full h-full"
-        style={{ position: 'fixed' }} // Fixed position to keep clouds in view
-      ></div>
-      <div className="relative w-full h-full">{children}</div>
+    <div className="relative min-h-screen w-full overflow-hidden">
+      {/* Vanta background container */}
+      {isClient && (
+        <div 
+          ref={vantaRef} 
+          className="absolute top-0 left-0 w-full h-full z-[-1]"
+          style={{
+            background: isMobile 
+              ? 'linear-gradient(to bottom, #68b8d7, #93c5e4)' 
+              : undefined
+          }}
+        >
+          {/* Static background for mobile */}
+          {isMobile && (
+            <div className="absolute inset-0 bg-cover bg-center opacity-40"
+                 style={{ 
+                   backgroundImage: 'url("/static-clouds.jpg")',
+                   filter: 'blur(1px)'
+                 }} />
+          )}
+        </div>
+      )}
+      
+      {/* Content */}
+      <div className="relative z-10">
+        {children}
+      </div>
     </div>
   );
 }
