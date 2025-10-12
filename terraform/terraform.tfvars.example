@@ -1,0 +1,46 @@
+# Copy this file to terraform.tfvars and fill in your values
+# cp terraform.tfvars.example terraform.tfvars
+
+# Your domain name (e.g., solecloud.com)
+domain_name = "your-domain.com"
+
+# WWW subdomain (optional, set to "" to disable)
+www_domain_name = "www.your-domain.com"
+
+# AWS region for resources
+aws_region = "us-east-1"
+
+# Environment name
+environment = "production"
+
+# CloudFront price class
+# PriceClass_100: USA, Canada, Europe
+# PriceClass_200: USA, Canada, Europe, Asia, Middle East, Africa
+# PriceClass_All: All edge locations
+price_class = "PriceClass_100"
+
+# Enable IPv6 support
+enable_ipv6 = true
+
+# Enable CloudFront access logging
+enable_logging = true
+
+# CloudFront cache settings (in seconds)
+cloudfront_default_ttl = 86400    # 1 day
+cloudfront_max_ttl     = 31536000 # 1 year
+
+# Additional tags
+tags = {
+  Project     = "SoleCloud Website"
+  ManagedBy   = "Terraform"
+  Environment = "production"
+  Owner       = "SoleCloud Team"
+}
+
+
+
+
+
+
+
+

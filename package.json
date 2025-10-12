@@ -5,13 +5,18 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:aws": "next build --config next.config.aws.js",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy:aws": "./deploy.sh"
   },
   "dependencies": {
+    "@types/nodemailer": "^7.0.2",
     "aos": "^2.3.4",
-    "framer-motion": "^12.9.2",
+    "framer-motion": "^12.23.22",
+    "lucide-react": "^0.545.0",
     "next": "^15.3.1",
+    "nodemailer": "^7.0.9",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.0.1",

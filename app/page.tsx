@@ -3,9 +3,8 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import ServiceCard from '@/components/ServiceCard';
 import AnimatedSection from '@/components/AnimatedSection';
-import { FaLaptopCode, FaCloud, FaHeadset } from 'react-icons/fa';
+import ServicesSection from '@/components/ServicesSection';
 
 // Dynamically import the CloudBackground component to prevent SSR issues
 const CloudBackground = dynamic(() => import('@/components/CloudBackground'), {
@@ -33,7 +32,7 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             >
-              Powering Your Digital Presence in the Cloud
+              Engineered for Growth. Built for the Cloud
             </motion.h1>
             
             <motion.p
@@ -42,7 +41,7 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="text-xl md:text-2xl text-gray-300 mb-10"
             >
-              Website creation and AWS hosting tailored for your business.
+              We blend design, automation, and cloud architecture into one seamless experience -- all tailored for your business
             </motion.p>
             
             <motion.div
@@ -52,7 +51,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Link href="/contact" className="btn-primary text-lg inline-block glow-effect">
+              <Link href="/contact" className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30 transform">
                 Get Started
               </Link>
             </motion.div>
@@ -61,78 +60,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <AnimatedSection className="relative z-10 bg-dark/90 py-16 md:py-24" direction="up" distance={40}>
-        <div className="section-container">
-          <div className="mb-12 text-center">
-            <motion.h2 
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold mb-4 relative inline-block"
-            >
-              <span className="relative z-10">Our Services</span>
-              <motion.div 
-                className="absolute -z-10 inset-0 bg-primary/10 rounded-full blur-xl"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1.2 }}
-                transition={{ duration: 1, delay: 0.3 }}
-                viewport={{ once: true }}
-              />
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-gray-400 max-w-2xl mx-auto"
-            >
-              We provide end-to-end solutions to establish and maintain your online presence.
-            </motion.p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6 md:gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <ServiceCard 
-                title="Website Development" 
-                description="Custom, responsive website design and development using modern technologies."
-                icon={<FaLaptopCode />} 
-              />
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <ServiceCard 
-                title="AWS Hosting" 
-                description="Secure, scalable cloud hosting solutions powered by Amazon Web Services."
-                icon={<FaCloud />} 
-              />
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <ServiceCard 
-                title="Support & Maintenance" 
-                description="Ongoing technical support and maintenance to keep your site running smoothly."
-                icon={<FaHeadset />} 
-              />
-            </motion.div>
-          </div>
-        </div>
-      </AnimatedSection>
+      <ServicesSection />
 
       {/* CTA Section */}
       <AnimatedSection 

@@ -1,22 +1,28 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable static export for S3/CloudFront deployment
+  output: 'export',
+  
   reactStrictMode: true,
+  
+  // Disable image optimization for static export
   images: {
-    domains: [],
+    unoptimized: true,
   },
+  
+  // Add trailing slashes for better S3 compatibility
+  trailingSlash: true,
+  
   // Disable ESLint during build
   eslint: {
     ignoreDuringBuilds: true,
   },
+  
   // Disable TypeScript checks during build
   typescript: {
     ignoreBuildErrors: true,
   },
-  experimental: {
-    // Ignore errors related to specific files
-    instrumentationHook: false,
-    esmExternals: "loose"
-  },
+  
   webpack: (config) => {
     // Handle canvas issues for server-side rendering
     config.externals = [...config.externals, { canvas: 'canvas' }];
@@ -33,6 +39,7 @@ const nextConfig = {
     
     return config;
   },
+  
   // These packages should only be used on the client side
   serverExternalPackages: ['three', 'vanta'],
 };

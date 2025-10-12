@@ -17,7 +17,7 @@ export default function RootLayout({
       <head>
         {/* Fonts are loaded in pages/_document.tsx */}
       </head>
-      <body className="bg-darker text-gray-100 min-h-screen">
+      <body className="bg-white text-gray-900 min-h-screen custom-scrollbar">
         <Navbar />
         <main>{children}</main>
       </body>

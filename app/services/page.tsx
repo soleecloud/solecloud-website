@@ -1,219 +1,156 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { FaLaptopCode, FaCloud, FaHeadset, FaMobileAlt, FaSearchPlus, FaShieldAlt, FaAngleRight, FaCogs } from 'react-icons/fa';
-import AnimatedSection from '@/components/AnimatedSection';
-import GlobeBackground from '@/components/GlobeBackground';
+import { motion } from "framer-motion";
+import { Cloud, Laptop, Smartphone, Headphones } from "lucide-react";
+import Footer from "@/components/Footer";
 
-export default function Services() {
-
+export default function ServicesPage() {
   const services = [
     {
-      id: 'webdev',
-      icon: <FaLaptopCode className="text-4xl text-blue-400" />,
-      title: 'Website Development',
-      description: 'Custom, responsive website design and development using Next.js, React, and other modern technologies. Our websites are optimized for performance, accessibility, and SEO.',
+      title: "Website Creation & AWS Hosting",
+      icon: <Laptop className="w-8 h-8 text-[#0096FF]" />,
+      description:
+        "Custom, responsive websites engineered for speed, security, and scalability — powered by AWS. From portfolio sites to enterprise platforms, we handle both the build and the cloud infrastructure behind it.",
       features: [
-        'Custom Design & Development',
-        'Responsive Mobile-First Approach',
-        'Performance Optimization',
-        'Content Management Systems',
-        'E-commerce Solutions'
-      ]
+        "Next.js & React Development",
+        "AWS EC2, S3, and CloudFront Hosting",
+        "Performance Optimization & CI/CD Integration",
+        "Domain Management & SSL Setup",
+      ],
+      color: "from-[#0096FF]/30 to-[#031B2E]",
     },
     {
-      id: 'aws',
-      icon: <FaCloud className="text-4xl text-blue-400" />,
-      title: 'AWS Hosting',
-      description: 'Secure, scalable cloud hosting solutions powered by Amazon Web Services. We handle the infrastructure so you can focus on your business.',
+      title: "AI-Powered Mobile App Development",
+      icon: <Smartphone className="w-8 h-8 text-[#FF6B35]" />,
+      description:
+        "Cross-platform apps infused with intelligence. We integrate AI-driven automation, personalization, and chat experiences into seamless mobile interfaces built with React Native and AWS Amplify.",
       features: [
-        'Managed AWS Infrastructure',
-        'Automated Deployment Pipelines',
-        'Load Balancing & Auto-scaling',
-        'Database Management',
-        'CDN Integration'
-      ]
+        "AI Chat & Voice Integration",
+        "Cross-Platform React Native Apps",
+        "AWS Amplify & API Gateway Integration",
+        "Cloud Data Storage & Authentication",
+      ],
+      color: "from-[#FF6B35]/30 to-[#031B2E]",
     },
     {
-      id: 'support',
-      icon: <FaHeadset className="text-4xl text-blue-400" />,
-      title: 'Support & Maintenance',
-      description: 'Ongoing technical support and maintenance to keep your site running smoothly. Regular updates, backups, and performance monitoring.',
+      title: "IT Support & Infrastructure Management",
+      icon: <Headphones className="w-8 h-8 text-[#0096FF]" />,
+      description:
+        "On-site and remote IT solutions that keep your business running smoothly — from help desk services and device management to network maintenance and cybersecurity monitoring.",
       features: [
-        '24/7 Monitoring',
-        'Regular Updates & Security Patches',
-        'Backup & Disaster Recovery',
-        'Performance Optimization',
-        'Technical Support'
-      ]
+        "Help Desk & 24/7 Remote Support",
+        "Hardware Setup & Troubleshooting",
+        "Network & Printer Configuration",
+        "Cybersecurity & Patch Management",
+      ],
+      color: "from-[#0096FF]/30 to-[#031B2E]",
     },
     {
-      id: 'mobile',
-      icon: <FaMobileAlt className="text-4xl text-blue-400" />,
-      title: 'Mobile App Development',
-      description: 'Cross-platform mobile applications that work seamlessly on iOS and Android devices using React Native and other modern frameworks.',
+      title: "AWS Cloud Engineering Bootcamp (Coming Soon)",
+      icon: <Cloud className="w-8 h-8 text-[#FF6B35]" />,
+      description:
+        "Our upcoming hands-on bootcamp designed to train the next generation of Cloud Engineers. Learn AWS infrastructure, automation, and DevSecOps workflows — directly from the SoleCloud team.",
       features: [
-        'Cross-Platform Development',
-        'Native App Experience',
-        'Push Notifications',
-        'Offline Functionality',
-        'App Store Submission'
-      ]
+        "AWS Core Services & Infrastructure",
+        "Terraform, CI/CD, and Automation",
+        "Security & Compliance Fundamentals",
+        "Capstone Projects & Real Deployment Labs",
+      ],
+      color: "from-[#FF6B35]/30 to-[#031B2E]",
     },
-    {
-      id: 'seo',
-      icon: <FaSearchPlus className="text-4xl text-blue-400" />,
-      title: 'SEO & Analytics',
-      description: 'Improve your site\'s visibility in search engines and gain insights into user behavior with our SEO and analytics services.',
-      features: [
-        'Keyword Research & Strategy',
-        'On-Page SEO Optimization',
-        'Analytics Setup & Reporting',
-        'Performance Monitoring',
-        'Conversion Rate Optimization'
-      ]
-    },
-    {
-      id: 'security',
-      icon: <FaShieldAlt className="text-4xl text-blue-400" />,
-      title: 'Security Solutions',
-      description: 'Protect your digital assets with our comprehensive security solutions, including SSL certificates, firewall configuration, and more.',
-      features: [
-        'SSL/TLS Implementation',
-        'Web Application Firewall',
-        'DDoS Protection',
-        'Regular Security Audits',
-        'Compliance Support'
-      ]
-    }
   ];
 
   return (
-    <GlobeBackground>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-24 pb-16 sm:pb-24">
-        <AnimatedSection className="mb-16 text-center">
-          <motion.div
-            className="relative inline-block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
-            <motion.div
-              className="absolute -z-10 -inset-1 rounded-lg opacity-30 blur-xl bg-blue-500"
-              animate={{ 
-                scale: [1, 1.05, 1],
-                opacity: [0.2, 0.3, 0.2]
-              }}
-              transition={{ 
-                duration: 4,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
-            />
-            <motion.div 
-              className="relative"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <motion.h1 
-                className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300"
-              >
-                Solutions in Motion
-              </motion.h1>
-              <motion.div 
-                className="absolute -z-10 inset-0 opacity-60"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              >
-                <FaCogs className="text-blue-400/20 text-7xl absolute -top-4 -right-12" />
-                <FaCogs className="text-blue-400/20 text-5xl absolute -bottom-4 -left-8" />
-              </motion.div>
-            </motion.div>
-          </motion.div>
-          <motion.p 
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            Comprehensive web and cloud solutions to help your business thrive online.
-          </motion.p>
-        </AnimatedSection>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
-            <motion.div 
-              key={service.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="bg-gray-800/80 backdrop-blur-sm rounded-lg p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-700 h-full flex flex-col"
-            >
-              <motion.div 
-                className="mb-5 p-3 bg-gray-900 rounded-full w-16 h-16 flex items-center justify-center"
-                whileHover={{ rotate: 5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                {service.icon}
-              </motion.div>
-              <h2 className="text-2xl font-semibold mb-3 text-blue-400">{service.title}</h2>
-              <p className="text-gray-300 mb-6">{service.description}</p>
-              <div className="mt-auto">
-                <h3 className="text-lg font-medium mb-3 text-white">Key Features:</h3>
-                <ul className="text-gray-300 space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <motion.li 
-                      key={featureIndex} 
-                      className="flex items-start"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: featureIndex * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <span className="text-blue-400 mr-2 mt-1"><FaAngleRight /></span>
-                      <span>{feature}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-                <Link href="/contact">
-                  <motion.button 
-                    className="mt-6 px-5 py-2 bg-gray-900 text-blue-400 rounded-md border border-blue-400 hover:bg-blue-400 hover:text-gray-900 transition-all duration-300 flex items-center group"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    Contact Us
-                    <FaAngleRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </motion.button>
-                </Link>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <AnimatedSection className="mt-20 text-center" delay={0.3}>
-          <h2 className="text-3xl font-bold mb-6 text-blue-400">Need a custom solution?</h2>
-          <p className="mb-8 text-gray-300 max-w-2xl mx-auto">
-            We can create tailored packages to meet your specific business needs.
-            Contact us to discuss your project requirements.
-          </p>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Link 
-              href="/contact" 
-              className="inline-block bg-blue-400 text-gray-900 font-medium py-3 px-8 rounded-md
-              hover:bg-blue-500 transition-all duration-300 transform hover:shadow-[0_0_15px_rgba(2,132,199,0.6)]"
-            >
-              Get in Touch
-            </Link>
-          </motion.div>
-        </AnimatedSection>
+    <main className="relative overflow-hidden bg-gradient-to-b from-[#041B2D] via-[#031526] to-[#020C1B] text-white min-h-screen">
+      {/* ---------- CLOUD MIST BACKGROUND ---------- */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <motion.div
+          animate={{ x: ["-10%", "10%", "-10%"], y: ["0%", "5%", "0%"], opacity: [0.25, 0.35, 0.25] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute w-[80vw] h-[80vw] bg-[#0096FF] blur-[180px] opacity-25 top-[10%] left-[-20%]"
+        />
+        <motion.div
+          animate={{ x: ["10%", "-5%", "10%"], y: ["10%", "0%", "10%"], opacity: [0.2, 0.3, 0.2] }}
+          transition={{ duration: 40, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute w-[70vw] h-[70vw] bg-[#FF6B35] blur-[200px] opacity-20 bottom-[0%] right-[-25%]"
+        />
       </div>
-    </GlobeBackground>
+
+      {/* ---------- HERO SECTION ---------- */}
+      <section className="relative text-center py-28 px-6">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-5xl sm:text-6xl font-bold tracking-tight text-white"
+        >
+          Solutions in <span className="text-[#0096FF]">Motion</span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.2 }}
+          className="mt-4 text-lg max-w-2xl mx-auto text-[#C9D6E3]"
+        >
+          Comprehensive web, app, and cloud solutions — designed to help your business thrive securely,
+          intelligently, and efficiently in the digital age.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="mt-10 h-[2px] w-32 bg-gradient-to-r from-[#0096FF] via-[#FF6B35] to-[#0096FF] rounded-full mx-auto"
+        />
+      </section>
+
+      {/* ---------- SERVICES GRID ---------- */}
+      <section className="max-w-6xl mx-auto px-6 pb-32 grid grid-cols-1 md:grid-cols-2 gap-10">
+        {services.map((service, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: i * 0.15 }}
+            viewport={{ once: true }}
+            className={`p-8 rounded-2xl bg-gradient-to-b ${service.color} border border-white/10 hover:border-[#0096FF]/40 hover:shadow-[0_0_35px_rgba(0,150,255,0.15)] transition-all duration-300 backdrop-blur-sm`}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              {service.icon}
+              <h3 className="text-2xl font-semibold text-white">{service.title}</h3>
+            </div>
+
+            <p className="text-[#C9D6E3] mb-6">{service.description}</p>
+
+            <ul className="space-y-2 text-[#AFC3D4]">
+              {service.features.map((f, j) => (
+                <li key={j} className="flex items-center gap-2">
+                  <span className="text-[#0096FF]">›</span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            {service.title.includes("Coming Soon") ? (
+              <button
+                disabled
+                className="mt-6 px-5 py-2 rounded-md text-sm font-semibold bg-gray-700 text-gray-400 cursor-not-allowed"
+              >
+                Coming Soon
+              </button>
+            ) : (
+              <a
+                href="/contact"
+                className="mt-6 px-5 py-2 rounded-md text-sm font-semibold bg-[#0096FF] hover:bg-[#0075CC] text-white inline-block transition-all"
+              >
+                Learn More
+              </a>
+            )}
+          </motion.div>
+        ))}
+      </section>
+
+      {/* ---------- FOOTER ---------- */}
+      <Footer />
+    </main>
   );
 }
