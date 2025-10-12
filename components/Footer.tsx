@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaInstagram } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -52,6 +52,24 @@ export default function Footer() {
           >
             <h3 className="text-xl font-semibold mb-4 text-primary">Follow Us</h3>
             <div className="flex space-x-4">
+              <a 
+                href="https://linkedin.com/company/solecloud" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary transition-colors duration-300 text-2xl"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin />
+              </a>
+              <a 
+                href="https://twitter.com/solecloud" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary transition-colors duration-300 text-2xl"
+                aria-label="Twitter"
+              >
+                <FaTwitter />
+              </a>
               <a 
                 href="https://instagram.com/solecloud.io" 
                 target="_blank"
