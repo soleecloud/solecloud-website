@@ -94,3 +94,4 @@ solecloud-website/
 ├── tailwind.config.js   # Tailwind CSS configuration
 └── tsconfig.json        # TypeScript configuration
 ```
+
