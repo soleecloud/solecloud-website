@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     projectType: "",
     message: "",
     timeline: "",
@@ -16,6 +17,34 @@ export default function ContactPage() {
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
+
+  // Simple CAPTCHA
+  const [captchaQuestion, setCaptchaQuestion] = useState({ num1: 0, num2: 0 });
+  const [captchaAnswer, setCaptchaAnswer] = useState("");
+  
+  // Generate new CAPTCHA question
+  const generateCaptcha = () => {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    setCaptchaQuestion({ num1, num2 });
+  };
+
+  // Initialize CAPTCHA on component mount
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+
+  // Email validation function
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Phone validation function
+  const validatePhone = (phone: string) => {
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -30,6 +59,37 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
+
+    // Validate email format
+    if (!validateEmail(formData.email)) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please enter a valid email address (example@domain.com)",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Validate phone format
+    if (formData.phone && !validatePhone(formData.phone)) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please enter a valid phone number",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Validate CAPTCHA
+    const correctAnswer = captchaQuestion.num1 + captchaQuestion.num2;
+    if (parseInt(captchaAnswer) !== correctAnswer) {
+      setSubmitStatus({
+        type: "error",
+        message: "Please solve the math question correctly",
+      });
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch("/api/contact", {
@@ -50,10 +110,13 @@ export default function ContactPage() {
         setFormData({
           name: "",
           email: "",
+          phone: "",
           projectType: "",
           message: "",
           timeline: "",
         });
+        setCaptchaAnswer("");
+        generateCaptcha(); // Generate new CAPTCHA after successful submission
       } else {
         setSubmitStatus({
           type: "error",
@@ -135,6 +198,14 @@ export default function ContactPage() {
                 className="input"
               />
             </div>
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number (recommended)"
+              value={formData.phone}
+              onChange={handleChange}
+              className="input"
+            />
             <select
               name="projectType"
               value={formData.projectType}
@@ -164,6 +235,30 @@ export default function ContactPage() {
               onChange={handleChange}
               className="input"
             />
+            
+            {/* Simple CAPTCHA */}
+            <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Security Check: What is {captchaQuestion.num1} + {captchaQuestion.num2}?
+              </label>
+              <div className="flex gap-3">
+                <input
+                  type="number"
+                  value={captchaAnswer}
+                  onChange={(e) => setCaptchaAnswer(e.target.value)}
+                  placeholder="Enter answer"
+                  required
+                  className="input flex-1"
+                />
+                <button
+                  type="button"
+                  onClick={generateCaptcha}
+                  className="px-4 py-2 bg-gray-600 hover:bg-gray-500 text-white rounded-lg transition-colors duration-200 text-sm"
+                >
+                  New Question
+                </button>
+              </div>
+            </div>
             
             {submitStatus.type && (
               <div
