@@ -6,8 +6,8 @@ import dynamic from 'next/dynamic';
 import AnimatedSection from '@/components/AnimatedSection';
 import ServicesSection from '@/components/ServicesSection';
 
-// Dynamically import the CloudBackground component to prevent SSR issues
-const CloudBackground = dynamic(() => import('@/components/CloudBackground'), {
+// Dynamically import the optimized CloudBackground component
+const CloudBackground = dynamic(() => import('@/components/OptimizedCloudBackground'), {
   ssr: false,
   loading: () => (
     <div className="fixed inset-0 z-[-20] bg-darker">
