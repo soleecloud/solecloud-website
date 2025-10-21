@@ -14,9 +14,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create transporter
+    // Create transporter for AWS WorkMail
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.mail.us-east-1.awsapps.com',
+      port: 465,
+      secure: true, // true for 465, false for other ports
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
