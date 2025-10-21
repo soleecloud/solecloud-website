@@ -17,12 +17,15 @@ export async function POST(request: NextRequest) {
     // Create transporter for AWS WorkMail
     const transporter = nodemailer.createTransport({
       host: 'smtp.mail.us-east-1.awsapps.com',
-      port: 465,
-      secure: true, // true for 465, false for other ports
+      port: 587,
+      secure: false, // false for 587, true for 465
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
     // Email to SoleCloud
@@ -73,8 +76,15 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error('Error sending email:', error);
+    console.error('Environment variables:', {
+      EMAIL_USER: process.env.EMAIL_USER ? 'Set' : 'Not set',
+      EMAIL_PASSWORD: process.env.EMAIL_PASSWORD ? 'Set' : 'Not set'
+    });
     return NextResponse.json(
-      { error: 'Failed to send email. Please try again later.' },
+      { 
+        error: 'Failed to send email. Please try again later.',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     );
   }
