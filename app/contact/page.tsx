@@ -42,8 +42,11 @@ export default function ContactPage() {
 
   // Phone validation function
   const validatePhone = (phone: string) => {
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-    return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+    // Remove all non-digit characters except + at the start
+    const cleanPhone = phone.replace(/[^\d+]/g, '');
+    // Check if it's a valid phone number (7-15 digits, optionally starting with +)
+    const phoneRegex = /^(\+?1?)?[2-9]\d{2}[2-9]\d{2}\d{4}$/;
+    return phoneRegex.test(cleanPhone) || cleanPhone.length >= 10;
   };
 
   const handleChange = (
